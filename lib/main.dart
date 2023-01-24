@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:trading/widgets/appBar.dart';
+import 'package:trading/widgets/sideBar.dart';
 
 void main() => runApp(const MyApp());
 
@@ -33,66 +35,120 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyApp.black,
-      appBar: AppBar(
-        leading: Builder(builder: (BuildContext context) {
-          return IconButton(
-            onPressed: () {
-              Scaffold.of(context).openDrawer();
-            },
-            tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-            icon: const Icon(Icons.align_horizontal_left_rounded),
-            iconSize: 30,
-          );
-        }),
-        elevation: 0,
-        backgroundColor: MyApp.black,
+      appBar: appBarLatera(MyApp.black),
+      drawer: sideBarPersonalizado(context),
+      body: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              arriba(),
+              SizedBox(height: 20),
+              userBalance(),
+            ]),
       ),
-      body: const Center(),
-      drawer: Drawer(
-        backgroundColor: MyApp.black,
-        // Add a ListView to the drawer. This ensures the user can scroll
-        // through the options in the drawer if there isn't enough vertical
-        // space to fit everything.
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: MyApp.black,
-              ),
-              child: Text(
-                'Drawer Header',
-                style: TextStyle(color: Colors.white),
-              ),
+    );
+  }
+}
+
+class arriba extends StatelessWidget {
+  const arriba({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(left: 10),
+      child: Text(
+        'Hello, Victor',
+        style: TextStyle(
+            fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
+      ),
+    );
+  }
+}
+
+class userBalance extends StatelessWidget {
+  const userBalance({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 90,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+        color: MyApp.darkBlue,
+      ),
+      padding: EdgeInsets.only(left: 10),
+      child: Row(
+        children: [
+          Container(
+            child: avatar(),
+          ),
+          balance(),
+          IconButton(
+            padding: EdgeInsets.only(left: 100),
+            icon: const Icon(
+              Icons.keyboard_arrow_right_rounded,
+              color: Colors.white,
             ),
-            ListTile(
-              title: const Text(
-                'Item 1',
-                style: TextStyle(color: Colors.white),
-              ),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-              },
+            onPressed: () {},
+          ),
+        ],
+      ),
+    );
+  }
+
+  Padding balance() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 30),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'YOUR BALANCE',
+            style: TextStyle(color: MyApp.orange, fontSize: 15),
+          ),
+          SizedBox(height: 10),
+          Text('\$25,0254.20',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
+                  letterSpacing: 1.5))
+        ],
+      ),
+    );
+  }
+
+  Stack avatar() {
+    return Stack(
+      children: [
+        CircleAvatar(
+          backgroundColor: Colors.white,
+          radius: 30,
+          child: CircleAvatar(
+            child: CircleAvatar(
+              radius: 26,
+              backgroundImage: AssetImage('assets/profile2.jpeg'),
             ),
-            ListTile(
-              title: const Text(
-                'Item 2',
-                style: TextStyle(color: Colors.white),
-              ),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-          ],
+            radius: 28,
+            backgroundColor: Colors.black,
+          ),
         ),
-      ),
+        Container(
+          padding: EdgeInsets.only(left: 40, top: 40),
+          child: CircleAvatar(
+            radius: 10,
+            backgroundColor: Colors.white,
+            child: CircleAvatar(
+              radius: 8,
+              backgroundColor: Colors.green[400],
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
