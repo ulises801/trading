@@ -50,8 +50,82 @@ class MyHomePage extends StatelessWidget {
               sectionTitle(),
               achievements(),
               sectionTitle2()
+              achievements(),
+              sectionTitle(),
+              SingleChildScrollView(
+                  scrollDirection: Axis.vertical, child: investment()),
             ]),
       ),
+    );
+  }
+}
+
+class investment extends StatelessWidget {
+  const investment({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Table(
+      children: [
+        TableRow(
+          children: [
+            CardPersonalizada(
+              icon: Icons.add,
+              colorBoton: Colors.tealAccent,
+              texto: 'opcion 1',
+            ),
+            CardPersonalizada(
+              icon: Icons.rocket_launch_rounded,
+              colorBoton: Colors.blueGrey,
+              texto: 'opcion 1',
+            )
+          ],
+        ),
+        TableRow(
+          children: [
+            CardPersonalizada(
+              icon: Icons.plus_one_sharp,
+              colorBoton: Colors.greenAccent,
+              texto: 'opcion 1',
+            ),
+            CardPersonalizada(
+              icon: Icons.raw_off,
+              colorBoton: Colors.yellowAccent,
+              texto: 'opcion 1',
+            )
+          ],
+        ),
+        TableRow(
+          children: [
+            CardPersonalizada(
+              icon: Icons.add,
+              colorBoton: Colors.tealAccent,
+              texto: 'opcion 1',
+            ),
+            CardPersonalizada(
+              icon: Icons.rocket_launch_rounded,
+              colorBoton: Colors.blueGrey,
+              texto: 'opcion 1',
+            )
+          ],
+        ),
+        TableRow(
+          children: [
+            CardPersonalizada(
+              icon: Icons.plus_one_sharp,
+              colorBoton: Colors.greenAccent,
+              texto: 'opcion 1',
+            ),
+            CardPersonalizada(
+              icon: Icons.raw_off,
+              colorBoton: Colors.yellowAccent,
+              texto: 'opcion 1',
+            )
+          ],
+        ),
+      ],
     );
   }
 }
@@ -518,5 +592,54 @@ class sectionTitle3 extends StatelessWidget {
             )
           ],
         ));
+  }
+}
+
+class CardPersonalizada extends StatelessWidget {
+  final IconData icon;
+  final Color colorBoton;
+  final String texto;
+
+  const CardPersonalizada(
+      {super.key,
+      required this.icon,
+      required this.colorBoton,
+      required this.texto});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(right: 15, top: 15, bottom: 15),
+      height: 180,
+      decoration: BoxDecoration(
+          color: MyApp.darkBlue, borderRadius: BorderRadius.circular(20)),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [Icon(Icons.abc_sharp), Icon(Icons.more_vert_outlined)],
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Row(
+                children: [
+                  Text('Apple'),
+                ],
+              ),
+              Row(
+                children: [
+                  Text('\$40,230'),
+                ],
+              )
+            ],
+          ),
+        ],
+        LinearProgressIndicator(
+          value: 80,
+        ),
+      ),
+    );
   }
 }
