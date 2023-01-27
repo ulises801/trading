@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:trading/widgets/appBar.dart';
 import 'package:trading/widgets/sideBar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:percent_indicator/percent_indicator.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:percent_indicator/percent_indicator.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void main() => runApp(const MyApp());
 
@@ -72,17 +73,29 @@ class investment extends StatelessWidget {
         TableRow(
           children: [
             CardPersonalizada(
-                name: 'apple', money: '\$13,503', percentage: 0.7),
+                name: 'Apple',
+                money: '\$13,503',
+                percentage: 0.7,
+                icon: FontAwesomeIcons.apple),
             CardPersonalizada(
-                name: 'amazon', money: '\$13,503', percentage: 0.2)
+                name: 'Amazon',
+                money: '\$13,503',
+                percentage: 0.2,
+                icon: FontAwesomeIcons.amazon)
           ],
         ),
         TableRow(
           children: [
             CardPersonalizada(
-                name: 'valve', money: '\$13,503', percentage: 0.5),
+                name: 'Valve',
+                money: '\$13,503',
+                percentage: 0.5,
+                icon: FontAwesomeIcons.steam),
             CardPersonalizada(
-                name: 'Blizzard', money: '\$14,503', percentage: 0.6)
+                name: 'Blizzard',
+                money: '\$14,503',
+                percentage: 0.6,
+                icon: FontAwesomeIcons.battleNet)
           ],
         ),
       ],
@@ -349,349 +362,91 @@ class achievements extends StatelessWidget {
   }
 }
 
-class SecondRoute extends StatelessWidget {
-  const SecondRoute({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: MyApp.black,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: MyApp.black,
-        title: const Text('Profile'),
-      ),
-      body: Padding(
-        padding:
-            const EdgeInsets.only(top: 60, left: 15, right: 15, bottom: 15),
-        child: Column(
-          children: [
-            Center(
-              child: CircleAvatar(
-                  radius: 50,
-                  backgroundImage: AssetImage('assets/profile2.jpeg')),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 22),
-              child: Column(
-                children: [
-                  Text(
-                    'Victor Hugo',
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(top: 6),
-                    child: Text(
-                      '@victur13',
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w200,
-                          color: Colors.grey),
-                    ),
-                  )
-                ],
-              ),
-            ),
-            Container(
-                margin: EdgeInsets.only(top: 40),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          color: MyApp.darkBlue),
-                      height: 100,
-                      width: 125,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            '32',
-                            style: TextStyle(
-                                fontSize: 30,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white),
-                          ),
-                          Text(
-                            'Posts',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white),
-                          )
-                        ],
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          color: MyApp.darkBlue),
-                      height: 100,
-                      width: 125,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            '26354',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 30,
-                                fontWeight: FontWeight.w600),
-                          ),
-                          Text(
-                            'Followers',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w300),
-                          )
-                        ],
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          color: MyApp.darkBlue),
-                      height: 100,
-                      width: 125,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            '256',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 30,
-                                fontWeight: FontWeight.w600),
-                          ),
-                          Text(
-                            'Subscriptions',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w300),
-                          )
-                        ],
-                      ),
-                    )
-                  ],
-                )),
-            sectionTitle3(),
-            Flexible(
-              flex: 1,
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [Post(), Post(), Post()],
-                ),
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-//POST
-class Post extends StatelessWidget {
-  const Post({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(5),
-      padding: EdgeInsets.all(10),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
-          color: MyApp.darkBlue),
-      height: 120,
-      width: 400,
-      child: Column(children: [
-        Row(
-          children: [
-            Column(
-              children: [
-                CircleAvatar(
-                    radius: 20,
-                    backgroundImage: AssetImage('assets/profile2.jpeg'))
-              ],
-            ),
-            Container(
-              padding: EdgeInsets.all(10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Jonh Cage',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w700),
-                  ),
-                  Text('10 min ago',
-                      style: TextStyle(
-                          color: Color.fromARGB(126, 158, 158, 158),
-                          fontSize: 8,
-                          fontWeight: FontWeight.w300))
-                ],
-              ),
-            )
-          ],
-        ),
-        Row(
-          children: [
-            Container(
-              margin: EdgeInsets.only(top: 10),
-              child: Text('OMG this ETF is so good !!',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400)),
-            )
-          ],
-        ),
-        Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-          Icon(
-            Icons.arrow_circle_up,
-            color: Colors.white,
-            size: 22,
-          ),
-          Text(
-            '32',
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w300),
-          ),
-          Text('_', style: TextStyle(color: MyApp.darkBlue)),
-          Icon(
-            Icons.arrow_circle_down,
-            color: Colors.white,
-            size: 22,
-          ),
-          Text(
-            '9',
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w300),
-          ),
-        ])
-      ]),
-    );
-  }
-}
-
-class sectionTitle3 extends StatelessWidget {
-  const sectionTitle3({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        margin: EdgeInsets.only(top: 50, bottom: 20),
-        padding: EdgeInsets.symmetric(horizontal: 9.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              children: [
-                Text(
-                  'Posts',
-                  style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white),
-                )
-              ],
-            ),
-            Column(
-              children: [
-                Text(
-                  'Sorting',
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w300,
-                      color: MyApp.orange),
-                )
-              ],
-            )
-          ],
-        ));
-  }
-}
-
 class CardPersonalizada extends StatelessWidget {
   final String name;
   final String money;
   final double percentage;
-
+  final IconData icon;
   const CardPersonalizada({
     super.key,
     required this.name,
     required this.money,
     required this.percentage,
+    required this.icon,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(15),
-      height: 150,
-      decoration: BoxDecoration(
-          color: MyApp.darkBlue, borderRadius: BorderRadius.circular(20)),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Icon(
-                  Icons.abc_sharp,
-                  color: MyApp.lightBlue,
-                  size: 50,
-                ),
-                Icon(
-                  Icons.more_vert_outlined,
-                  color: Color.fromRGBO(172, 173, 175, 1),
-                )
-              ],
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      this.name,
-                      style: TextStyle(
-                          color: Colors.grey[200],
-                          fontWeight: FontWeight.w700,
-                          fontSize: 16),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Row(
-                  children: [
-                    Text(
-                      money,
-                      style: TextStyle(
-                          color: Colors.grey[500],
-                          fontWeight: FontWeight.w700,
-                          fontSize: 13),
-                    ),
-                  ],
-                )
-              ],
-            ),
-            LinearPercentIndicator(
-              padding: EdgeInsets.symmetric(horizontal: 0),
-              width: 125,
-              progressColor: MyApp.orange,
-              percent: this.percentage,
-              backgroundColor: Color.fromRGBO(72, 72, 77, 1),
-              barRadius: Radius.circular(10),
-            )
-          ],
+    return InkWell(
+      onTap: () {},
+      highlightColor: MyApp.green,
+      child: Container(
+        margin: EdgeInsets.all(15),
+        height: 150,
+        decoration: BoxDecoration(
+            color: MyApp.darkBlue, borderRadius: BorderRadius.circular(20)),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Icon(
+                    this.icon,
+                    color: Colors.white,
+                    size: 40,
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.more_vert_outlined),
+                    color: Color.fromRGBO(172, 173, 175, 1),
+                    hoverColor: MyApp.green,
+                    focusColor: MyApp.green,
+                    onPressed: () {},
+                  ),
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        this.name,
+                        style: TextStyle(
+                            color: Colors.grey[200],
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        money + ' (' + (percentage * 100).toString() + ' %)',
+                        style: TextStyle(
+                            color: Colors.grey[500],
+                            fontWeight: FontWeight.w700,
+                            fontSize: 13),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+              LinearPercentIndicator(
+                padding: EdgeInsets.symmetric(horizontal: 0),
+                width: 125,
+                progressColor: MyApp.orange,
+                percent: this.percentage,
+                backgroundColor: Color.fromRGBO(72, 72, 77, 1),
+                barRadius: Radius.circular(10),
+              )
+            ],
+          ),
         ),
       ),
     );

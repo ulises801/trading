@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../main.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../pages/profile.dart';
 
 void main() => runApp(const MyApp());
 
@@ -46,7 +47,7 @@ Drawer sideBarPersonalizado(BuildContext context) {
 
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const SecondRoute()),
+              MaterialPageRoute(builder: (context) => const Profile()),
             );
           },
         ),
