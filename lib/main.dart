@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:trading/widgets/appBar.dart';
 import 'package:trading/widgets/sideBar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 void main() => runApp(const MyApp());
 
@@ -45,15 +46,13 @@ class MyHomePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               arriba(),
-              SizedBox(height: 20),
+              SizedBox(height: 15),
               userBalance(),
-              sectionTitle(),
+              sectionTitle(mensaje: 'Achievementsasda'),
               achievements(),
-              sectionTitle2()
-              achievements(),
-              sectionTitle(),
-              SingleChildScrollView(
-                  scrollDirection: Axis.vertical, child: investment()),
+              sectionTitle(mensaje: 'Investment portfolio'),
+              Flexible(
+                  flex: 1, child: SingleChildScrollView(child: investment())),
             ]),
       ),
     );
@@ -72,57 +71,17 @@ class investment extends StatelessWidget {
         TableRow(
           children: [
             CardPersonalizada(
-              icon: Icons.add,
-              colorBoton: Colors.tealAccent,
-              texto: 'opcion 1',
-            ),
+                name: 'apple', money: '\$13,503', percentage: 0.7),
             CardPersonalizada(
-              icon: Icons.rocket_launch_rounded,
-              colorBoton: Colors.blueGrey,
-              texto: 'opcion 1',
-            )
+                name: 'amazon', money: '\$13,503', percentage: 0.2)
           ],
         ),
         TableRow(
           children: [
             CardPersonalizada(
-              icon: Icons.plus_one_sharp,
-              colorBoton: Colors.greenAccent,
-              texto: 'opcion 1',
-            ),
+                name: 'valve', money: '\$13,503', percentage: 0.5),
             CardPersonalizada(
-              icon: Icons.raw_off,
-              colorBoton: Colors.yellowAccent,
-              texto: 'opcion 1',
-            )
-          ],
-        ),
-        TableRow(
-          children: [
-            CardPersonalizada(
-              icon: Icons.add,
-              colorBoton: Colors.tealAccent,
-              texto: 'opcion 1',
-            ),
-            CardPersonalizada(
-              icon: Icons.rocket_launch_rounded,
-              colorBoton: Colors.blueGrey,
-              texto: 'opcion 1',
-            )
-          ],
-        ),
-        TableRow(
-          children: [
-            CardPersonalizada(
-              icon: Icons.plus_one_sharp,
-              colorBoton: Colors.greenAccent,
-              texto: 'opcion 1',
-            ),
-            CardPersonalizada(
-              icon: Icons.raw_off,
-              colorBoton: Colors.yellowAccent,
-              texto: 'opcion 1',
-            )
+                name: 'Blizzard', money: '\$14,503', percentage: 0.6)
           ],
         ),
       ],
@@ -232,56 +191,20 @@ class userBalance extends StatelessWidget {
 }
 
 class sectionTitle extends StatelessWidget {
-  const sectionTitle({super.key});
+  final String mensaje;
+  const sectionTitle({super.key, required this.mensaje});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: EdgeInsets.only(top: 50, bottom: 20),
+        margin: EdgeInsets.only(top: 25, bottom: 20),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
               children: [
                 Text(
-                  'Achievements',
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white),
-                )
-              ],
-            ),
-            Column(
-              children: [
-                Text(
-                  'See all',
-                  style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
-                      color: MyApp.orange),
-                )
-              ],
-            )
-          ],
-        ));
-  }
-}
-
-class sectionTitle2 extends StatelessWidget {
-  const sectionTitle2({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        margin: EdgeInsets.only(top: 50, bottom: 20),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              children: [
-                Text(
-                  'Investment portfolio',
+                  this.mensaje,
                   style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
@@ -596,48 +519,82 @@ class sectionTitle3 extends StatelessWidget {
 }
 
 class CardPersonalizada extends StatelessWidget {
-  final IconData icon;
-  final Color colorBoton;
-  final String texto;
+  final String name;
+  final String money;
+  final double percentage;
 
-  const CardPersonalizada(
-      {super.key,
-      required this.icon,
-      required this.colorBoton,
-      required this.texto});
+  const CardPersonalizada({
+    super.key,
+    required this.name,
+    required this.money,
+    required this.percentage,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: 15, top: 15, bottom: 15),
-      height: 180,
+      margin: EdgeInsets.all(15),
+      height: 150,
       decoration: BoxDecoration(
           color: MyApp.darkBlue, borderRadius: BorderRadius.circular(20)),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [Icon(Icons.abc_sharp), Icon(Icons.more_vert_outlined)],
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Row(
-                children: [
-                  Text('Apple'),
-                ],
-              ),
-              Row(
-                children: [
-                  Text('\$40,230'),
-                ],
-              )
-            ],
-          ),
-        ],
-        LinearProgressIndicator(
-          value: 80,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Icon(
+                  Icons.abc_sharp,
+                  color: MyApp.lightBlue,
+                  size: 50,
+                ),
+                Icon(
+                  Icons.more_vert_outlined,
+                  color: Color.fromRGBO(172, 173, 175, 1),
+                )
+              ],
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      this.name,
+                      style: TextStyle(
+                          color: Colors.grey[200],
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Row(
+                  children: [
+                    Text(
+                      money,
+                      style: TextStyle(
+                          color: Colors.grey[500],
+                          fontWeight: FontWeight.w700,
+                          fontSize: 13),
+                    ),
+                  ],
+                )
+              ],
+            ),
+            LinearPercentIndicator(
+              padding: EdgeInsets.symmetric(horizontal: 0),
+              width: 125,
+              progressColor: MyApp.orange,
+              percent: this.percentage,
+              backgroundColor: Color.fromRGBO(72, 72, 77, 1),
+              barRadius: Radius.circular(10),
+            )
+          ],
         ),
       ),
     );
