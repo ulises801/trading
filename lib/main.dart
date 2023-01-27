@@ -3,6 +3,7 @@ import 'package:trading/widgets/appBar.dart';
 import 'package:trading/widgets/sideBar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() => runApp(const MyApp());
 
@@ -402,7 +403,7 @@ class SecondRoute extends StatelessWidget {
                     Container(
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(10)),
-                          color: Color(0xFFBFEAB9)),
+                          color: MyApp.darkBlue),
                       height: 100,
                       width: 125,
                       child: Column(
@@ -411,11 +412,15 @@ class SecondRoute extends StatelessWidget {
                           Text(
                             '32',
                             style: TextStyle(
-                                fontSize: 30, fontWeight: FontWeight.w600),
+                                fontSize: 30,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white),
                           ),
                           Text(
                             'Posts',
-                            style: TextStyle(fontWeight: FontWeight.w600),
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white),
                           )
                         ],
                       ),
@@ -549,20 +554,22 @@ class Post extends StatelessWidget {
         Row(mainAxisAlignment: MainAxisAlignment.end, children: [
           Icon(
             Icons.arrow_circle_up,
-            color: MyApp.orange,
+            color: Colors.white,
+            size: 22,
           ),
           Text(
-            '12',
-            style: TextStyle(color: MyApp.orange),
+            '32',
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w300),
           ),
           Text('_', style: TextStyle(color: MyApp.darkBlue)),
           Icon(
             Icons.arrow_circle_down,
             color: Colors.white,
+            size: 22,
           ),
           Text(
-            '12',
-            style: TextStyle(color: Colors.white),
+            '9',
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w300),
           ),
         ])
       ]),
