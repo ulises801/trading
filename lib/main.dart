@@ -472,10 +472,100 @@ class SecondRoute extends StatelessWidget {
                     )
                   ],
                 )),
-            sectionTitle3()
+            sectionTitle3(),
+            Flexible(
+              flex: 1,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [Post(), Post(), Post()],
+                ),
+              ),
+            )
           ],
         ),
       ),
+    );
+  }
+}
+
+//POST
+class Post extends StatelessWidget {
+  const Post({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(5),
+      padding: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+          color: MyApp.darkBlue),
+      height: 120,
+      width: 400,
+      child: Column(children: [
+        Row(
+          children: [
+            Column(
+              children: [
+                CircleAvatar(
+                    radius: 20,
+                    backgroundImage: AssetImage('assets/profile2.jpeg'))
+              ],
+            ),
+            Container(
+              padding: EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Jonh Cage',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w700),
+                  ),
+                  Text('10 min ago',
+                      style: TextStyle(
+                          color: Color.fromARGB(126, 158, 158, 158),
+                          fontSize: 8,
+                          fontWeight: FontWeight.w300))
+                ],
+              ),
+            )
+          ],
+        ),
+        Row(
+          children: [
+            Container(
+              margin: EdgeInsets.only(top: 10),
+              child: Text('OMG this ETF is so good !!',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w400)),
+            )
+          ],
+        ),
+        Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+          Icon(
+            Icons.arrow_circle_up,
+            color: MyApp.orange,
+          ),
+          Text(
+            '12',
+            style: TextStyle(color: MyApp.orange),
+          ),
+          Text('_', style: TextStyle(color: MyApp.darkBlue)),
+          Icon(
+            Icons.arrow_circle_down,
+            color: Colors.white,
+          ),
+          Text(
+            '12',
+            style: TextStyle(color: Colors.white),
+          ),
+        ])
+      ]),
     );
   }
 }
