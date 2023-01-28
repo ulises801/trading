@@ -139,7 +139,7 @@ class Profile extends StatelessWidget {
                     ],
                   ),
                 )),
-            sectionTitle3(),
+            SectionTitle3(),
             Flexible(
               flex: 1,
               child: SingleChildScrollView(
@@ -239,8 +239,8 @@ class Post extends StatelessWidget {
   }
 }
 
-class sectionTitle3 extends StatelessWidget {
-  const sectionTitle3({super.key});
+class SectionTitle3 extends StatelessWidget {
+  const SectionTitle3({super.key});
 
   @override
   Widget build(BuildContext context) {

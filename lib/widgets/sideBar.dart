@@ -34,6 +34,25 @@ Drawer sideBarPersonalizado(BuildContext context) {
             )),
         ListTile(
           shape: RoundedRectangleBorder(
+            side: BorderSide(color: Colors.white, width: 0.0),
+          ),
+          title: const Text(
+            'Home',
+            style: TextStyle(color: Colors.white),
+          ),
+          onTap: () {
+            // Update the state of the app
+            // ...
+            // Then close the drawer
+
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const MyApp()),
+            );
+          },
+        ),
+        ListTile(
+          shape: RoundedRectangleBorder(
             side: BorderSide(color: Colors.white, width: 0.3),
           ),
           title: const Text(
