@@ -53,7 +53,7 @@ class MyHomePage extends StatelessWidget {
               arriba(),
               SizedBox(height: 15),
               userBalance(),
-              sectionTitle(mensaje: 'Achievementsasda'),
+              sectionTitle(mensaje: 'Achievements'),
               achievements(),
               sectionTitle(mensaje: 'Investment portfolio'),
               Flexible(
