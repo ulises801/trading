@@ -3,8 +3,6 @@ import 'package:trading/pages/company.dart';
 import 'package:trading/pages/profile.dart';
 import 'package:trading/widgets/appBar.dart';
 import 'package:trading/widgets/sideBar.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -50,7 +48,7 @@ class MyHomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              arriba(),
+              welcomeText(),
               SizedBox(height: 15),
               userBalance(),
               sectionTitle(mensaje: 'Achievements'),
@@ -106,8 +104,8 @@ class investment extends StatelessWidget {
   }
 }
 
-class arriba extends StatelessWidget {
-  const arriba({super.key});
+class welcomeText extends StatelessWidget {
+  const welcomeText({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -127,31 +125,34 @@ class userBalance extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 90,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(10)),
-        color: MyApp.darkBlue,
-      ),
-      padding: EdgeInsets.only(left: 10),
-      child: Row(
-        children: [
-          Container(
-            child: avatar(),
-          ),
-          balance(),
-          IconButton(
-            padding: EdgeInsets.only(left: 100),
-            icon: const Icon(
-              Icons.keyboard_arrow_right_rounded,
-              color: Colors.white,
+    return Flexible(
+      flex: 1,
+      child: Container(
+        height: 90,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+          color: MyApp.darkBlue,
+        ),
+        padding: EdgeInsets.only(left: 10),
+        child: Row(
+          children: [
+            Container(
+              child: avatar(),
             ),
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const Profile()));
-            },
-          ),
-        ],
+            balance(),
+            IconButton(
+              padding: EdgeInsets.only(left: 100),
+              icon: const Icon(
+                Icons.keyboard_arrow_right_rounded,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Profile()));
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
