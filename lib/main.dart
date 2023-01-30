@@ -132,26 +132,24 @@ class userBalance extends StatelessWidget {
         color: MyApp.darkBlue,
       ),
       padding: EdgeInsets.only(left: 10),
-      child: Expanded(
-        child: Row(
-          children: [
-            Container(
-              child: avatar(),
+      child: Row(
+        children: [
+          Container(
+            child: avatar(),
+          ),
+          balance(),
+          IconButton(
+            padding: EdgeInsets.only(left: 100),
+            icon: const Icon(
+              Icons.keyboard_arrow_right_rounded,
+              color: Colors.white,
             ),
-            balance(),
-            IconButton(
-              padding: EdgeInsets.only(left: 100),
-              icon: const Icon(
-                Icons.keyboard_arrow_right_rounded,
-                color: Colors.white,
-              ),
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Profile()));
-              },
-            ),
-          ],
-        ),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Profile()));
+            },
+          ),
+        ],
       ),
     );
   }
