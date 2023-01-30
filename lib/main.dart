@@ -125,15 +125,14 @@ class userBalance extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      flex: 1,
-      child: Container(
-        height: 90,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
-          color: MyApp.darkBlue,
-        ),
-        padding: EdgeInsets.only(left: 10),
+    return Container(
+      height: 90,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+        color: MyApp.darkBlue,
+      ),
+      padding: EdgeInsets.only(left: 10),
+      child: Expanded(
         child: Row(
           children: [
             Container(
